@@ -8,7 +8,7 @@ ESX                = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 
---Recupere les véhicules
+--Recover vehicles
 ESX.RegisterServerCallback('eden_garage:getVehicles', function(source, cb)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
@@ -22,9 +22,9 @@ ESX.RegisterServerCallback('eden_garage:getVehicles', function(source, cb)
 		cb(vehicules)
 	end)
 end)
--- Fin --Recupere les véhicules
+-- End --Recover vehicles
 
---Stock les véhicules
+--Stock Vehicles
 ESX.RegisterServerCallback('eden_garage:stockv',function(source,cb, vehicleProps)
 	local isFound = false
 	local _source = source
@@ -46,9 +46,9 @@ ESX.RegisterServerCallback('eden_garage:stockv',function(source,cb, vehicleProps
 end)
 
 
---Fin stock les vehicules
+--End stock the vehicles
 
---Change le state du véhicule
+--Change the state of the vehicle
 
 AddEventHandler('eden_garage:modifystate', function(vehicleProps, state)
 	local _source = source
@@ -68,11 +68,11 @@ end)
 
 
 
---Fin change le state du véhicule
+-- End changes the state of the vehicle
 
---Fonction qui récupere les plates
+-- Function that recovers the plates
 
--- Fin Fonction qui récupere les plates
+-- End Function that recovers the plates
 
 ESX.RegisterServerCallback('eden_garage:getOutVehicles',function(source, cb)	
 	local _source = source
@@ -88,7 +88,7 @@ ESX.RegisterServerCallback('eden_garage:getOutVehicles',function(source, cb)
 	end)
 end)
 
---Foonction qui check l'argent
+-- Functions that check the money
 ESX.RegisterServerCallback('eden_garage:checkMoney', function(source, cb)
 
 	local xPlayer = ESX.GetPlayerFromId(source)
@@ -100,9 +100,9 @@ ESX.RegisterServerCallback('eden_garage:checkMoney', function(source, cb)
 	end
 
 end)
---Fin Foonction qui check l'argent
+-- End of function who checks the money
 
---fonction qui retire argent
+-- Function that withdraws money
 
 AddEventHandler('eden_garage:pay', function()
 
@@ -113,10 +113,9 @@ AddEventHandler('eden_garage:pay', function()
 	TriggerClientEvent('esx:showNotification', source, 'Vous avez payé ' .. Config.Price)
 
 end)
---Fin fonction qui retire argent
+-- End function that withdraws money
 
-
---Recupere les vehicules
+--Recover vehicles
 function getPlayerVehicles(identifier)
 	
 	local vehicles = {}
@@ -127,7 +126,7 @@ function getPlayerVehicles(identifier)
 	end
 	return vehicles
 end
---Fin Recupere les vehicules
+--End Recupere the vehicles
 
 --Debug
 AddEventHandler('eden_garage:debug', function(var)
@@ -174,10 +173,10 @@ end
 --Fin Debug
 
 
--- Fonction qui change les etats sorti en rentré lors d'un restart
+-- Function that changes the states released in return during a restart
 AddEventHandler('onMySQLReady', function()
 
 	MySQL.Sync.execute("UPDATE owned_vehicles SET state=true WHERE state=false", {})
 
 end)
--- Fin Fonction qui change les etats sorti en rentré lors d'un restart
+-- End Function that changes the states released in return during a restart
